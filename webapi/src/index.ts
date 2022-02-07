@@ -2,6 +2,8 @@ import * as express from 'express';
 
 const app: any = express();
 const router = express.Router();
+router.use(express.urlencoded({ extended: true }));
+router.use(express.json());
 
 router.get('/', async (req, res) => {
   res.send("Hello World!");
