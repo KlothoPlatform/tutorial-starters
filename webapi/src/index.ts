@@ -1,17 +1,14 @@
 import * as express from 'express';
 
+const users = require('./users/userapi');
+const videoGet = require("./videos/video-listapi")
+const videoPost = require('./videos/video-postapi');
+
 const app: any = express();
-const router = express.Router();
-router.use(express.urlencoded({ extended: true }));
-router.use(express.json());
 
-let quoteStore = new Map<string, string>();
-
-router.get('/', async (req, res) => {
-  res.send("Hello World!");
-});
-
-app.use(router)
+app.use(users)
+app.use(videoGet)
+app.use(videoPost)
 
 app.listen(3000, async () => {
   console.log(`App listening locally`)
